@@ -1,0 +1,139 @@
+@import "./json";
+@import "./notify";
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}  
+}
+
+.danger { color: $danger }
+.success { color: $success }
+.warning { color: $warning }
+
+.page {
+    .heading { padding: 1px }
+    .heading h1 { margin: 30px; color: $dgray; font-weight: normal }
+}
+
+#container.ping-component {
+    & { background: linear-gradient(135deg, #44BBFF 0%,#D8335B 67%,#FEC606 100%); }
+}
+
+.hosts-container {
+    & { overflow-y: auto; position: absolute; bottom: 30px; top: 80px; left: 0; right: 0; }
+}
+
+#nav-footer {
+    & { position: absolute; bottom: 15px; left: 20px; right: 20px; }
+    .btn-dark { width: 100%; background: lighten($dark, 5%); border: none; color: #fff; transition: background 0.3s, color 0.3s }
+    .btn-dark:hover { background: #fff; color: $dark }
+}
+
+.hosts {
+    & { padding: 20px }
+    .host { margin-bottom: 20px }
+    .host .name a{ color: $light; font-size: 10pt }
+    .host .name .sub { color: rgba(255,255,255,0.4); font-size: 8pt }
+    .host .sup { color: rgba(255,255,255,0.2); font-size:8pt }
+    .host .value { font-size: 10pt; }
+}
+
+.nav-container {
+    & { padding: 20px; }
+    .input { width: 100%; padding:8px; border: none; background: rgba(255,255,255,0.1); color:#fff }
+    .input { @include placeholder { color: lighten($dgray, 15%); font-size: 10pt; font-weight: 300; } }
+}
+
+#ping-detail {
+    & { overflow-y: auto; padding: 20px; position: absolute; bottom: 0; left: 0; right: 0; top: 50px; }
+
+}
+
+.site-page {
+    .site-name { font-size: 16pt; }
+}
+
+.form-site-add {
+    & { max-width: 920px; margin: 0 auto; width: 95%; padding: 0 }
+}
+
+
+/**
+ * Form
+ */
+.input, .textarea { display:block; width: 100%; max-width: 100%; padding: 8px; outline:none; border: 0; border-bottom: 1px solid $gray; margin-top: 5px; font-size: 10pt; color: rgba(0,0,0,0.7); font-weight: normal; background: transparent }
+.textarea { border: 1px solid $gray; }
+.textarea.long { min-height: 250px }
+.input[disabled], .textarea[disabled] { opacity: 0.6; background: #f8f8f8; }
+.input:focus, .day:focus, .month:focus, .year:focus, .textarea:focus { border-color: $primary }
+.input, .textarea { @include placeholder { color: lighten($dgray, 15%); font-size: 10pt; font-weight: 300; } }
+
+.input-sm { font-size: 9pt; padding:.4em .8em; }
+.form {
+	&.hide-actions .actions { visibility: hidden; height: 1px; overflow: hidden }
+  .title { font-weight: normal; margin: 0 10px 0; font-size: 13pt }
+  .title + .group { margin-top: 0 }
+  .group { margin: 20px 0 0 0; padding: 0 2px }
+  .group.inline + .group:not(.inline) { margin-top: 0 }
+  .group.inline { display: inline-block; margin-top: 0; }
+  .group-start { margin-top: 30px!important; }
+  .group-start > label { font-size: 18pt; color: $gray }
+  .textarea { min-height: 113px; }
+  .one-line .textarea { min-height: 0!important; box-sizing: border-box; height: auto; }
+  .label { color: rgba(0,0,0,0.6); cursor: text; }
+  .label:hover { color: $dark }
+  .day, .month, .year { padding: 8px 5px; margin-top: 5px; outline: none; border: 1px solid $gray; max-width: 100px; text-align: center }
+  .options { position: absolute; right: 10px; top: 5px; }
+  .options .close { cursor: pointer }
+  // .options .ex{ font-size: 13pt; color: green }
+  .div { position: relative }
+  .toggler { margin-right: 5px }
+  .checkbox { padding: 4px; display: block; cursor: pointer }
+  .checkbox .active { color: $green }
+  .cal { position: relative }
+  .cal .clear { right: 10px; position: absolute; top: 8px; opacity: 0.3; cursor: pointer; }
+  .cal .clear:hover { opacity: 1 }
+  .options { z-index: 1 }
+  .actions { margin-top: 20px }
+
+  // .group[class*="pure-u-"] { margin-top: 0; margin-bottom: 0 }
+
+  .checkbox.checked .ex-toggle-off { color: $success }
+  .checkbox.checked .ex-toggle-off:before { content: "\e614"; }
+
+  .file { background: $lgray2; outline: 3px solid $lgray2; border: 2px dashed $gray; position: relative }
+  .input-file { opacity: 0; }
+  .file.is-dragover { background: #fff; border-color: $orange }
+  .file-preview { position: absolute; left: 0; width: 50px; height: 100%; }
+  .file-preview img { height: 100%; width: auto; max-width: 100%; margin: auto }
+}
+
+
+.form.effect {
+  .select label { margin-right: 10px }
+  .group {position: relative; border: none }
+  .label:not(.checkbox) {position: absolute; top: 18px; left: 8px; transform: translate3d(0, 0, 0); transition: all 0.2s ease-in-out; cursor: text; }
+
+  .element:not(.select), .select .input{ padding: 20px 8px 3px; appearance: none; transition: all 0.2s ease-in-out;}
+  .textarea { border: none; border-bottom: 1px solid $gray; }
+  .textarea.grayed { background: lighten($lgray, 3%); border: none }
+  .disabled { background: none; }
+
+  .element.filled + .label,
+  .select.selected .element + .label,
+  .element:focus + .label { color: $primary; font-size: 9pt; transform: translate3d(0, 0px, 0); top: 2px }
+  .element.error { border-color: $danger }
+
+  .cal.selected, .cal.filled { margin-top: 15px }
+  .cal.selected + .label, .cal.selected + .label { top: 9px }
+
+  // .actions { margin: 30px 0 0 0; height: 30px;  }
+
+  .register-as { margin: 20px 0 10px }
+
+  .file-group .label { top: 15px; }
+  .file-group:not(.preview) .label { font-size: 13pt; left: 45%; color: rgba(0,0,0,0.3); top: 12px }
+  .group.preview .label{ left: 80px; }
+}
